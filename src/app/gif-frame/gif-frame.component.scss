@@ -1,0 +1,23 @@
+@import "src/variables.scss";
+div{
+    padding: 10px;
+    position: relative;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    i{
+        position: absolute;
+        right: 25px;
+        top: 25px;
+        cursor: pointer;
+        color: $pink;
+    }
+    img{
+        cursor: pointer;
+        max-height: 30vh;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.945);
+
+    }
+}

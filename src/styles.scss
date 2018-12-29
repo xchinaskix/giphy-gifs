@@ -1,1 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+@import "src/variables.scss";
+body{
+    font-family: $mainFont;
+    font-size: 5vh;
+}

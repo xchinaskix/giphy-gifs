@@ -1,0 +1,18 @@
+<div class="wrapper">
+    <app-gif-frame
+    (click)="openFullSize(gif)"
+    *ngFor="let gif of gifs"
+    [style.display]="checkInFavorites(gif.id) ? 'flex': 'none'"
+    [source]="gif.images.downsized.url"
+    [id]="gif.id"
+    [likes]="checkInFavorites(gif.id)"
+    >
+  </app-gif-frame>
+  
+  <span *ngIf="gifs.length === 0" class="emptyList">You dont have favorites yet <i class="far fa-sad-cry fa-lg"></i></span>
+  
+  <div *ngIf="modalToggle" class="modalToggle" (click)="closeModal()">
+    <img src="{{showInModal}}" alt="">
+  </div>
+
+</div>

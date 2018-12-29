@@ -1,0 +1,5 @@
+<div class="gif-wrap">
+  <img src="{{source}}" alt="">
+  <i *ngIf="!likes" class="far fa-heart fa-lg" (click)="addFavorites($event)"></i>
+  <i *ngIf="likes" class="fas fa-heart fa-lg" (click)="removeFavorites($event)"></i>
+</div>

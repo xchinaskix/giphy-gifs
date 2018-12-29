@@ -1,0 +1,46 @@
+@import "src/variables.scss";
+
+.active{
+    color: $pink;
+}
+a {
+    color: $black;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+input{
+    border: none;
+    border-bottom: 1px solid $grey;
+}
+input:focus span:focus{
+    outline: none;
+}
+.header{
+    border: none;
+    border-bottom: 1px solid $black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 8vh;
+    display: flex;
+    justify-content: space-between;
+    .routes{
+        display: flex;
+        width: 10vw;
+        justify-content: space-between;
+        .first{
+            margin-right: 10px;
+        }
+    }
+    .search{
+        font-family: $logoFont;
+        font-size: 8vh;
+        text-transform: uppercase;
+        cursor: pointer;
+    }
+    .auth{
+        width: 10vw;
+        display: flex;
+        justify-content: flex-end;
+    }
+}

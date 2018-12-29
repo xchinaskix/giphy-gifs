@@ -1,0 +1,13 @@
+<div class="wrapper">
+  <app-gif-frame
+    (click)="openFullSize(gif)"
+    *ngFor="let gif of gifs" 
+    [source]="gif.images.downsized.url"
+    [id]="gif.id"
+    [likes]="checkInFavorites(gif.id)"
+    >
+  </app-gif-frame>
+  <div *ngIf="modalToggle" class="modalToggle" (click)="closeModal()">
+    <img src="{{showInModal}}" alt="">
+  </div>
+</div>
