@@ -12,7 +12,7 @@ export class MainComponent implements OnInit {
   public showInModal: string;
   public amount = 25;
   public el: HTMLElement;
-  public pending = false;
+  public pending;
 
   constructor(public service: GifService) {}
 
@@ -21,14 +21,13 @@ export class MainComponent implements OnInit {
       this.el = document.querySelector('.wrapper');
       const { scrollY, innerHeight } = window;
       const lg = this.el.offsetHeight;
-      if ((scrollY + innerHeight) > (lg - 300) && !this.pending) {
+      if ((scrollY + innerHeight) > (lg - 300) && !this.service.pending) {
         this.getWithParams();
       }
     }
 
   ngOnInit() {
-    this.service.getSearchGifs('gif')
-    .subscribe(res => this.gifs = res.data);
+    this.service.getSearchGifs('gif');
     this.el = document.querySelector('.wrapper');
   }
 
@@ -48,15 +47,7 @@ export class MainComponent implements OnInit {
   }
 
   getWithParams() {
-    this.pending = true;
-    this.amount += 25;
-    const lng = this.gifs.length;
-    this.service.getSearchWithParam('gif', `${this.amount}`)
-    .subscribe(res => {
-      this.pending = false;
-      console.log(res.data, this.gifs);
-      const newElem = res.data.slice(lng);
-      this.gifs = [...this.gifs, ...newElem];
-    });
+    console.log(this.pending);
+    this.service.getSearchWithParam();
   }
 }

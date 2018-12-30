@@ -8,22 +8,30 @@
       >Home
     </a>
     <a 
+      *ngIf="service.isAuth"
       routerLink="/fav" 
       routerLinkActive="active" 
       [routerLinkActiveOptions]="{exact: true}"
       >Favorites
     </a>
   </div>
-  <div class="search">
+  <div class="logo">
       <span routerLink="/">Giphy gifs</span>
-  </div>
-  <div class="auth">
+    </div>
+    <div class="auth">
+      <div class="search" [style.display]="showSearch ? 'flex' : 'none'">
+        <input [style.display]="searchState ? 'initial' : 'none'" #searchInput type="text">
+        <i *ngIf="searchState" (click)="toggleState()" class="fas fa-times"></i>
+        <i *ngIf="!searchState" (click)="toggleState()" class="fas fa-search"></i>
+      </div>
       <a 
-      routerLink="/auth" 
-      routerLinkActive="active" 
-      [routerLinkActiveOptions]="{exact: true}"
-      >Sign in
-    </a>
+        *ngIf="!service.isAuth"
+        routerLink="/auth" 
+        routerLinkActive="active" 
+        [routerLinkActiveOptions]="{exact: true}"
+        >Sign in
+      </a>
+      <a *ngIf="service.isAuth" class="logout" (click)="logout()">Logout</a>
   </div>
 </div>
     

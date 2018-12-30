@@ -1,15 +1,36 @@
 <div class="wrapper">
-    <app-gif-frame
+  <div class="upload">
+    <div class="upload--button" [style.display]="isOpen ? 'flex' : 'none'" [@showHide]="isOpen ? 'open' : 'closed'" (click)="toggle()">
+      <i class="fas fa-plus"></i>
+      <span>Upload your own gif</span>
+    </div>
+    <div class="upload--form" [style.display]="isOpen ? 'none' : 'flex'" [@hideShowForm]="isOpen ? 'closed': 'open' ">
+      <form #f="ngForm" (ngSubmit)="onSubmit()" >
+        <div class="upload--file--button">
+            <label [ngClass]="{'invalid': form.controls.file && form.controls.file.touched && !form.controls.file.valid}" for="select">Select file</label>
+            <input type="file" (change)="show($event)" name="file" required ngModel id="select" accept='image/gif'/>
+            <i class="far fa-times-circle closeForm" (click)="toggle()"></i>
+        </div>
+        <input type="text" placeholder="Tag name" name="tagName" required ngModel>
+        <button type="submit" class="submitButton" [class.invalid--submit]="!form.valid" [disabled]="!form.valid">Send File</button>
+      </form>
+      <app-upload-progress
+        *ngIf="loading"
+        [progress]="progress"
+      ></app-upload-progress>
+    </div>
+  </div>
+  <app-gif-frame
     (click)="openFullSize(gif)"
-    *ngFor="let gif of gifs"
+    *ngFor="let gif of service.getFavorites()"
     [style.display]="checkInFavorites(gif.id) ? 'flex': 'none'"
-    [source]="gif.images.downsized.url"
+    [source]="gif.images.downsized.url || gif.images.original_still.url"
     [id]="gif.id"
     [likes]="checkInFavorites(gif.id)"
     >
   </app-gif-frame>
   
-  <span *ngIf="gifs.length === 0" class="emptyList">You dont have favorites yet <i class="far fa-sad-cry fa-lg"></i></span>
+  <span *ngIf="service.getFavorites().length === 0" class="emptyList">You dont have favorites yet <i class="far fa-sad-cry fa-lg"></i></span>
   
   <div *ngIf="modalToggle" class="modalToggle" (click)="closeModal()">
     <img src="{{showInModal}}" alt="">

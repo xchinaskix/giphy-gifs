@@ -11,8 +11,17 @@ a {
 input{
     border: none;
     border-bottom: 1px solid $grey;
+    font-family: $mainFont;
+    line-height: 2vw;
+    color: $black;
+    width: 15vw;
+    font-size: 1.5vw;
+    font-weight: 600;
 }
-input:focus span:focus{
+input:focus{
+    outline: none;
+}
+span:focus{
     outline: none;
 }
 .header{
@@ -26,21 +35,36 @@ input:focus span:focus{
     justify-content: space-between;
     .routes{
         display: flex;
-        width: 10vw;
-        justify-content: space-between;
+        width: 25vw;
+        justify-content: flex-start;
         .first{
             margin-right: 10px;
         }
     }
-    .search{
+    .logo{
         font-family: $logoFont;
-        font-size: 8vh;
+        font-size: 5vw;
         text-transform: uppercase;
         cursor: pointer;
     }
     .auth{
-        width: 10vw;
+        width: 25vw;
         display: flex;
         justify-content: flex-end;
+        align-items: center;
+        .search{
+            display: flex;
+            i{
+                color: $pink;
+                font-size: 0.7em;
+                cursor: pointer;
+            }
+        }
+        a{
+            margin-left: 10px;
+        }
+        .logout{
+            cursor: pointer;
+        }
     }
 }

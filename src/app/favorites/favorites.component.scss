@@ -1,11 +1,135 @@
 @import "src/variables.scss";
 
+input{
+    border: none;
+    border-bottom: 1px solid $grey;
+    font-family: $mainFont;
+    line-height: 2vw;
+    color: $black;
+    font-size: 1.5vw;
+    font-weight: 600;
+}
+input:focus{
+    outline: none;
+}
+button:focus{
+    outline: none;
+}
+input::placeholder{
+    font-family: $mainFont;
+    text-transform: uppercase;
+    color: $black;
+    font-size: 1.5vw;
+}
+input.ng-touched.ng-invalid{
+    border-bottom: 1px solid $error;
+}
+input.ng-untouched{
+  border-bottom: 1px solid $grey;
+}
+input.ng-touched.ng-valid{
+  border-bottom: 1px solid $grey;
+}
+
+
 .wrapper{
     overflow: hidden;
     flex-wrap: wrap;
-    margin: 0 5vw;
+    padding: 0 5vw;
     display: flex;
     justify-content: center;
+
+    .upload{
+        width: 100vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // min-height: 11vw;
+        margin-top: 2vh;
+        .upload--button{
+            border: 1px solid $pink;
+            border-radius: 10vw;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0 2vw;
+            i{
+                color: $pink;
+                margin-right: 1vw;
+            }
+            span{
+                text-transform: uppercase;
+            }
+
+        }
+        .upload--form{
+            width: 100vw;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            form{
+                border: 1px solid #fdafbc;
+                border-radius: 2vw;
+                min-width: 40vw;
+                display: flex;
+                flex-direction: column;
+                height: 20vw;
+                justify-content: space-around;
+                padding: 0 2vw;
+                .upload--file--button{
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    input {
+                      display: block;
+                      opacity: 0;
+                      position: absolute;
+                    }
+                    label {
+                      cursor: pointer;
+                      font-size: 2vw;
+                      color: $black;
+                      font-weight: 600;
+                      text-transform: uppercase;
+                      border: 1px solid $pink;
+                      border-radius: 24px;
+                      padding: 0 2vw;
+                      outline: 0 !important;
+                      display: flex;
+                      justify-content: center;
+                      align-items: center;
+                    }
+                    .closeForm{
+                        color: $pink;
+                        top: 1vw;
+                        right: 34vw;
+                    }
+                }
+                .invalid{
+                    border: 1px solid $error !important;
+                }
+            }
+            .submitButton{
+                background-color: $pink;
+                color: #fff;
+                border-color: $pink;
+                font-family: $mainFont;
+                border-radius: 1vw;
+                font-weight: 600;
+                font-size: 1.5vw;
+                opacity: 1;
+                cursor: pointer;
+            }
+            .invalid--submit{
+                opacity: 0.5;
+                cursor: default;
+                background-color: #fff;
+                border-color: $pink;
+                color: $black;
+            }
+        }
+    }
 
     .modalToggle{
         position: fixed;
@@ -29,5 +153,12 @@
         i {
             color: $pink;
         }
+    }
+
+    app-upload-progress{
+        position: absolute;
+        min-width: 34vw;
+        height: 100%;
+        z-index: 500;
     }
 }
