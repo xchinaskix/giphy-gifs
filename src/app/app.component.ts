@@ -17,9 +17,8 @@ export class AppComponent implements OnInit {
     } else {
       const user = JSON.parse(localStorage.getItem('giphyUser'));
       user['auth'].isAuth ? this.service.setAuth(true) : this.service.setAuth(false);
-
+      this.service.getFavoritesFromStorage();
     }
-    this.service.getFavoritesFromStorage();
 
   }
 
