@@ -1,5 +1,7 @@
 <div class="gif-wrap">
   <img src="{{source}}" alt="">
-  <i *ngIf="!likes && service.isAuth" class="far fa-heart fa-lg" (click)="addFavorites($event)"></i>
-  <i *ngIf="likes && service.isAuth" class="fas fa-heart fa-lg" (click)="removeFavorites($event)"></i>
+  <div class="icon">
+    <i *ngIf="!likes && service.isAuth" class="far fa-heart" (click)="addFavorites($event)"></i>
+    <i *ngIf="likes && service.isAuth" class="fas fa-heart" (click)="removeFavorites($event)"></i>
+  </div>
 </div>

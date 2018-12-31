@@ -7,7 +7,7 @@
   <app-gif-frame
     (click)="openFullSize(gif)"
     *ngFor="let gif of service.main" 
-    [source]="gif.images.downsized.url || gif.images.original_still.url"
+    [source]="gif.images.preview_gif.url || gif.images.original_still.url"
     [id]="gif.id"
     [likes]="checkInFavorites(gif.id)"
     >

@@ -22,7 +22,6 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
     this.router.events.subscribe(params => {
       if (params instanceof NavigationEnd) {
-        console.log(params.url);
         if (params.url !== '/') {
           this.showSearch = false;
           this.input.nativeElement.value = '';

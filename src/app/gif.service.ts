@@ -11,7 +11,7 @@ export class GifService {
     public favoritesListId = [];
     public favorites = [];
     public main = [];
-    public amount = 25;
+    public amount = 75;
     public lgn: number;
     public currSearch = 'gif';
     public pending = false;
@@ -28,12 +28,13 @@ export class GifService {
     }
 
     getSearchGifs(search: string) {
-        this.amount = 25;
+        this.amount = 75;
         this.pending = true;
         this.currSearch = search === '' ? 'gif' : search;
         let params = new HttpParams();
         params = params.append('api_key', this.API_KEY);
         params = params.append('q', this.currSearch);
+        params = params.append('limit', `${this.amount}`);
         this.http.get(`${this.HOST}/v1/gifs/search`, {params: params})
         .subscribe(res => {
             this.pending = false;
@@ -42,8 +43,9 @@ export class GifService {
         });
     }
 
+
     getSearchWithParam() {
-        this.amount += 25;
+        this.amount += 50;
         this.pending = true;
         let params = new HttpParams();
         params = params.append('api_key', this.API_KEY);
@@ -54,6 +56,7 @@ export class GifService {
             this.pending = false;
             const newElem = res['data'].slice(this.lgn);
             this.main = [...this.main, ...newElem];
+            this.lgn = this.main.length;
         });
     }
 
@@ -91,25 +94,10 @@ export class GifService {
 
     getFavoritesFromStorage() {
         const fav = JSON.parse(localStorage.getItem('giphyUser'));
-        console.log(fav);
         this.favoritesListId = [...fav['favorites']] ;
     }
 
-    uploadGif(obj) {
-        let params = new HttpParams();
-        params = params.append('api_key', this.API_KEY);
-        const tt = {file: obj.file};
-        // params = params.append('username', obj.userName);
-        // params = params.append('tag', obj.tagName);
-        // params = params.append('file', obj.file);
-        this.http.post(`${this.UPLOAD}/v1/gifs`, tt, {params: params})
-        .subscribe(res => {
-            console.log(res);
-        }, error => console.log(error)
-        );
-    }
-
-    uploadGif1(obj): Promise<any> {
+    uploadGif(obj): Promise<any> {
             this.isLoading.next(true);
             const promise = new Promise<any>((resolve, reject) => {
                 console.log(obj);

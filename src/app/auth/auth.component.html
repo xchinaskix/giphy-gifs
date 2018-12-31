@@ -1,21 +1,21 @@
 <div class="wrapper">
     <form #f="ngForm">
-      <span class="error--message" *ngIf="error">*invalid login or password</span>
-      <input [ngClass]="{'errorLogin' : error}" type="text" placeholder="Login" name="login" required ngModel>
-      <input [ngClass]="{'errorLogin' : error}" type="password" placeholder="Password" name="password" required ngModel>
+      <span class="error--message fontClass" *ngIf="error">*invalid login or password</span>
+      <input class="fontClass" [ngClass]="{'errorLogin' : error}" type="text" placeholder="Login" name="login" required ngModel>
+      <input class="fontClass" [ngClass]="{'errorLogin' : error}" type="password" placeholder="Password" name="password" required ngModel>
       <button 
         type="submit" 
-        class="submitButton"
+        class="submitButton fontClass"
         [class.invalid--submit]="!form.valid" 
         [disabled]="!form.valid" 
         (click)="signin()"
       >sign in</button>
-      <span class="massage">Don't have account?</span>
+      <span class="massage fontClass">Don't have account?</span>
       <button 
         type="submit" 
         [class.invalid--submit]="!form.valid" 
         [disabled]="!form.valid"
-        class="submitButton" 
+        class="submitButton fontClass" 
         (click)="signup()"
       >sign up</button>
     </form>

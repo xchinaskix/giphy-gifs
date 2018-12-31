@@ -95,7 +95,7 @@ export class FavoritesComponent implements OnInit, OnDestroy {
       tagName: this.form.value.tagName,
       file: this.gifFile
     };
-    this.service.uploadGif1(obj)
+    this.service.uploadGif(obj)
     .then(res => {
       this.service.addFavorites(res.data.id);
       this.toggle();

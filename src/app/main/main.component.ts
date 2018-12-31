@@ -21,18 +21,17 @@ export class MainComponent implements OnInit {
       this.el = document.querySelector('.wrapper');
       const { scrollY, innerHeight } = window;
       const lg = this.el.offsetHeight;
-      if ((scrollY + innerHeight) > (lg - 300) && !this.service.pending) {
+      if ((scrollY + innerHeight) > (lg - 150) && !this.service.pending) {
         this.getWithParams();
       }
     }
 
   ngOnInit() {
-    this.service.getSearchGifs('gif');
+    this.service.getSearchGifs('');
     this.el = document.querySelector('.wrapper');
   }
 
   openFullSize(gif: any) {
-    console.log(gif);
     this.showInModal = gif.images.downsized_large.url;
     this.modalToggle = true;
   }
@@ -47,7 +46,6 @@ export class MainComponent implements OnInit {
   }
 
   getWithParams() {
-    console.log(this.pending);
     this.service.getSearchWithParam();
   }
 }

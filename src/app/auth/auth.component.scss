@@ -6,7 +6,6 @@ input{
     font-family: $mainFont;
     line-height: 2vw;
     color: $black;
-    font-size: 1.5vw;
     font-weight: 600;
 }
 input:focus{
@@ -19,7 +18,6 @@ input::placeholder{
     font-family: $mainFont;
     text-transform: uppercase;
     color: $black;
-    font-size: 2vw;
 }
 input.ng-touched.ng-invalid{
     border-bottom: 2px solid $error;
@@ -51,26 +49,22 @@ input.ng-touched.ng-valid{
             border-bottom: 2px solid $error;
         }
         .error--message{
-            font-size: 2vw;
             text-transform: lowercase;
             text-align: center;
             color: $error;
             font-weight: 600;
         }
         .massage{
-            font-size: 2vw;
             text-transform: lowercase;
             text-align: center;
         }
         .submitButton{
             background-color: #fff;
             color: $black;
-            // border-color: $pink;
             border: 2px solid $pink;
             font-family: $mainFont;
             border-radius: 1vw;
             font-weight: 600;
-            font-size: 2.5vw;
             opacity: 1;
             cursor: pointer;
         }
@@ -81,5 +75,36 @@ input.ng-touched.ng-valid{
             border-color: $pink;
             color: $black;
         }
+    }
+}
+
+.fontClass {
+    font-size: 2vw;
+}
+
+@media only screen and (max-width: 1280px) {
+    .fontClass{
+        font-size: 3vw;
+    }
+    .wrapper{
+        form{
+            width: 80vw;
+        }
+    }
+    
+}
+@media only screen and (max-width: 992px) {
+    .fontClass{
+        font-size: 4vw;
+    }
+}
+@media only screen and (max-width: 768px) {
+    .fontClass{
+        font-size: 5vw;
+    }
+}
+@media only screen and (max-width: 480px) {
+    .fontClass{
+        font-size: 6vw;
     }
 }

@@ -4,9 +4,7 @@ input{
     border: none;
     border-bottom: 1px solid $grey;
     font-family: $mainFont;
-    line-height: 2vw;
     color: $black;
-    font-size: 1.5vw;
     font-weight: 600;
 }
 input:focus{
@@ -19,7 +17,6 @@ input::placeholder{
     font-family: $mainFont;
     text-transform: uppercase;
     color: $black;
-    font-size: 1.5vw;
 }
 input.ng-touched.ng-invalid{
     border-bottom: 1px solid $error;
@@ -37,6 +34,7 @@ input.ng-touched.ng-valid{
     flex-wrap: wrap;
     padding: 0 5vw;
     display: flex;
+    align-items: center;
     justify-content: center;
 
     .upload{
@@ -44,7 +42,6 @@ input.ng-touched.ng-valid{
         display: flex;
         justify-content: center;
         align-items: center;
-        // min-height: 11vw;
         margin-top: 2vh;
         .upload--button{
             border: 1px solid $pink;
@@ -56,6 +53,7 @@ input.ng-touched.ng-valid{
             i{
                 color: $pink;
                 margin-right: 1vw;
+                cursor: pointer;
             }
             span{
                 text-transform: uppercase;
@@ -88,7 +86,6 @@ input.ng-touched.ng-valid{
                     }
                     label {
                       cursor: pointer;
-                      font-size: 2vw;
                       color: $black;
                       font-weight: 600;
                       text-transform: uppercase;
@@ -99,8 +96,11 @@ input.ng-touched.ng-valid{
                       display: flex;
                       justify-content: center;
                       align-items: center;
+                      z-index: 300;
                     }
                     .closeForm{
+                        cursor: pointer;
+                        z-index: 300;
                         color: $pink;
                         top: 1vw;
                         right: 34vw;
@@ -117,7 +117,6 @@ input.ng-touched.ng-valid{
                 font-family: $mainFont;
                 border-radius: 1vw;
                 font-weight: 600;
-                font-size: 1.5vw;
                 opacity: 1;
                 cursor: pointer;
             }
@@ -148,7 +147,6 @@ input.ng-touched.ng-valid{
 
     .emptyList {
         margin-top: 5vh;
-        font-size: 6vh;
         text-transform: uppercase;
         i {
             color: $pink;
@@ -161,5 +159,67 @@ input.ng-touched.ng-valid{
         min-width: 44vw;
         height: 100%;
         z-index: 500;
+    }
+}
+
+.fontClass {
+    font-size: 2vw;
+}
+
+@media only screen and (max-width: 1280px) {
+    .fontClass{
+        font-size: 3vw;
+    }
+    .wrapper{
+        .upload{
+            .upload--form{
+                form{
+                    width: 80vw;
+                }
+            }
+        }
+    }
+    
+}
+@media only screen and (max-width: 992px) {
+    .fontClass{
+        font-size: 4vw;
+    }
+    .wrapper{
+        .upload{
+            .upload--form{
+                form{
+                    height: 25vw;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 768px) {
+    .fontClass{
+        font-size: 5vw;
+    }
+    .wrapper{
+        .upload{
+            .upload--form{
+                form{
+                    height: 30vw;
+                }
+            }
+        }
+    }
+}
+@media only screen and (max-width: 480px) {
+    .fontClass{
+        font-size: 6vw;
+    }
+    .wrapper{
+        .upload{
+            .upload--form{
+                form{
+                    height: 35vw;
+                }
+            }
+        }
     }
 }
