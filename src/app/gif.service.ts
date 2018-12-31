@@ -1,7 +1,6 @@
-import { Injectable, EventEmitter } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, Subject, AsyncSubject, BehaviorSubject } from 'rxjs';
-import { tap, map } from 'rxjs/operators';
+import { Observable, Subject, BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class GifService {
@@ -67,7 +66,6 @@ export class GifService {
         params = params.append('ids', ids);
         this.http.get(`${this.HOST}/v1/gifs`, {params: params})
         .subscribe(res => {
-            console.log(res);
             this.favorites = res['data'];
         });
     }
@@ -100,8 +98,6 @@ export class GifService {
     uploadGif(obj): Promise<any> {
             this.isLoading.next(true);
             const promise = new Promise<any>((resolve, reject) => {
-                console.log(obj);
-                const { token } = JSON.parse(localStorage.getItem('currentUser'));
                 const url = `${this.UPLOAD}/v1/gifs?api_key=${this.API_KEY}&tags=${obj.tagName}`;
                 const xhr = new XMLHttpRequest();
                 const formData = new FormData();
@@ -109,19 +105,15 @@ export class GifService {
                 xhr.open('POST', url, true);
                 xhr.addEventListener('readystatechange', (e) => {
                     if (xhr.readyState === 4 && xhr.status === 200) {
-                        // Done. Inform the user
                         this.isLoading.next(false);
                         resolve(xhr.response);
                     } else if (xhr.readyState === 4 && xhr.status !== 200) {
-                        // Error. Inform the userRSA_PKCS1_PADDING
-                        console.log(xhr.response);
                         this.isLoading.next(false);
                         reject();
                     }
                 });
 
                 xhr.upload.onprogress = (event) => {
-                    console.log(event);
                     const percentDone = Math.round(100 * event.loaded / event.total);
                     this.progress.next(percentDone);
                 };

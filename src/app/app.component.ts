@@ -12,7 +12,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     if (!localStorage.getItem('giphyUser')) {
-      // localStorage.setItem('giphyUser', JSON.stringify(this.giphyUser));
       this.service.setAuth(false);
     } else {
       const user = JSON.parse(localStorage.getItem('giphyUser'));

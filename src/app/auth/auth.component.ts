@@ -23,7 +23,7 @@ export class AuthComponent implements OnInit {
   signin() {
     const user = { login: this.form.value.login, password: this.form.value.password, isAuth: true };
     const localData =  JSON.parse(localStorage.getItem('giphyUser'));
-    if (localData.auth.login === user.login && localData.auth.password === user.password) {
+    if (localData && localData.auth.login === user.login && localData.auth.password === user.password) {
       const userData = {auth: user, favorites: localData.favorites};
       this.setUser(userData);
     } else {
