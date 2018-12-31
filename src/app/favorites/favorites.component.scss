@@ -157,7 +157,8 @@ input.ng-touched.ng-valid{
 
     app-upload-progress{
         position: absolute;
-        min-width: 34vw;
+        border-radius: 2vw;
+        min-width: 44vw;
         height: 100%;
         z-index: 500;
     }

@@ -19,4 +19,18 @@
         justify-content: center;
         align-items: center;
     }
+
+    .pending{
+        margin-top: 5vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        i{
+            color: $pink;
+        }
+        span{
+            text-transform: uppercase;
+        }
+    }
 }

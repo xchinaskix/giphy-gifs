@@ -1,4 +1,9 @@
 <div class="wrapper">
+  <div class="pending" *ngIf="service.pending || service.main.length === 0">
+    <img src="../../assets/listloader.gif" *ngIf="service.pending" alt="">
+    <i class="far fa-sad-cry fa-4x"></i>
+    <span *ngIf="!service.pending && service.main.length === 0">Nothing found</span>
+  </div>
   <app-gif-frame
     (click)="openFullSize(gif)"
     *ngFor="let gif of service.main" 

@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { GifService } from '../gif.service';
 import { Observable, fromEvent } from 'rxjs';
 import { map, debounceTime, distinctUntilChanged } from 'rxjs/operators';
-import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -39,10 +39,10 @@ export class HeaderComponent implements OnInit {
     this.observable$ = fromEvent<any>(this.input.nativeElement, 'keyup')
     .pipe(
       map(event => event.target.value),
-      debounceTime(500),
-      distinctUntilChanged(),
+      debounceTime(1500),
+      distinctUntilChanged()
     );
-  this.observable$.subscribe(val => this.sendValues(val));
+    this.observable$.subscribe(val => this.sendValues(val));
   }
 
   sendValues(param: string) {
@@ -64,8 +64,6 @@ export class HeaderComponent implements OnInit {
     this.service.setAuth(false);
     this.router.navigate(['/']);
   }
-
-
 
 
 }

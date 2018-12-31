@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy } from '@angular/core';
 import { GifService } from '../gif.service';
 import {
   trigger,
@@ -50,7 +50,7 @@ import { Subscription } from 'rxjs';
     ]),
   ]
 })
-export class FavoritesComponent implements OnInit {
+export class FavoritesComponent implements OnInit, OnDestroy {
   public isOpen = true;
   public modalToggle = false;
   public loading: boolean;
@@ -109,6 +109,15 @@ export class FavoritesComponent implements OnInit {
 
   checkInFavorites(id: string) {
     return this.service.checkGifInFavorites(id);
+  }
+
+  ngOnDestroy() {
+    if (this.subscriber) {
+      this.subscriber.unsubscribe();
+    }
+    if (this.subscriber_2) {
+      this.subscriber_2.unsubscribe();
+    }
   }
 
 }
